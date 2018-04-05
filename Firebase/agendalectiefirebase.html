@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script>
+  var  listaClienti=[];
+
+		var indexModificat = -1;
+		function adaugaClient(form, event) 
+			event.preventDefault();
+			// listaClienti = [];
+			// var server = JSON.parse(this.responseText);
+			// for (var i in server) {
+			// 	listaClienti.push(server[i]);
+			// }
+
+			
+			if (indexModificat !== -1) { var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function () {
+					if (this.readyState == 4 && this.status == 200) {
+						drawClienti();
+					}
+				};
+				xhttp.open("PUT", "https://agenda-24739.firebaseio.com/.json", true);
+				xhttp.send(JSON.stringify({
+					nume: form.querySelector("[name=nume]").value,
+					telefon: form.querySelector("[name=telefon]").value,
+				}));
+				indexModificat = -1;
+			} else {
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function () {
+					if (this.readyState == 4 && this.status == 200) {
+						drawClienti();
+					}
+				};
+
+				xhttp.open("PUT", "https://agenda-24739.firebaseio.com/.json", true);
+				xhttp.send(JSON.stringify({
+					nume: form.querySelector("[name=nume]").value,
+					telefon: form.querySelector("[name=telefon]").value,
+				}));
+			}
+
+
+
+		/*	xhttp.open("GET", "https://agenda-24739.firebaseio.com/.json", true);
+		xhttp.send(); */
+
+
+
+		function sterge(index) {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function (){
+				if (this.readyState == 4 && this.status == 200) {  
+					drawClienti();
+				}
+			};
+			xhttp.open("DELETE", "https://agenda-24739.firebaseio.com"+index+"/.json", true);
+			xhttp.send();
+		}
+
+		function modifica(index) {
+			event.preventDefault();
+             var list=form.querySelectorAll("input[name]");
+             var obj={};
+             for(var i=0;i<list.length;i++){
+                 var val=list[i].value;
+                 var name=list[i].getAttribute("name");
+                 obj[name]=val;
+             }
+             console.log(obj);
+          
+            var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function (){
+				if (this.readyState == 4 && this.status == 200) {  
+                    console.log(this.responseText);
+				}
+			};
+			xhttp.open("PUT", "https://proiect1-cb1fb.firebaseio.com/.json", true);
+			xhttp.send(JSON.stringify(obj));
+
+            }
+        
+		function drawClienti() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					listaClienti = [];
+					var server = JSON.parse(this.responseText);
+					for (var i in server) {
+						listaClienti.push(server[i]);
+					}
+
+
+					var tabel = document.querySelector("#listaClienti tbody");
+					var str = "";
+					for (var i = 0; i < listaClienti.length; i++) {
+
+						var rand = `<tr>
+							<td>${listaClienti[i].nume}</td>
+							<td>${listaClienti[i].telefon}</td>
+							<td><a href="#" onclick="modifica(${i})" >Modifica</a></td>
+							<td><a href="#" onclick="sterge(${i})" >Sterge</a></td>
+						</tr>`;
+						str += rand;
+					}
+					console.log(str);
+					tabel.innerHTML = str;
+				}
+			};
+			xhttp.open("GET", "https://agenda-24739.firebaseio.com/.json", true);
+			xhttp.send();
+
+		}
+	</script>
+
+</head>
+
+<body onload="drawClienti();">
+	<form method="post" onsubmit="adaugaClient(this,event);" style="background-color:#ffd100;border-radius:5px;max-width:500px;">
+		<fieldset style="border: 0px dashed #676767;">
+			<legend style="border: 0px dashed #676767;border-radius: 10px;padding: 0 5px;">Agenda</legend>
+
+			<label for="nume">Nume:</label>
+			<input name="nume" id="nume" type="text">
+
+			<label for="telefon">Telefon:</label>
+			<input name="telefon" id="telefon" type="number">
+			<br>
+
+
+
+			<div style="text-align:center;">
+				<input type="submit" value="Salveaza" />
+			</div>
+
+		</fieldset>
+	</form>
+	<br />
+	<table id="listaClienti" style="background-color:#ffd100;border-radius:5px;padding: 20px;">
+		<thead>
+			<tr>
+				<td>Nume</td>
+				<td>Telefon</td>
+				<td></td>
+				<td></td>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+
+</body>
+
+</html>

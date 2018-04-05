@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script>
+             var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function (){
+				if (this.readyState == 4 && this.status == 200) {  
+				   detalii = JSON.parse(this.responseText);
+                   console.log(detalii);
+				   var str=""
+				   for(var i in detalii){
+				       console.log(i, detalii);
+                       var rand= `
+                          <tr>               
+                            <td><img src="${detalii.imagine}"/></td>
+                            <td>${detalii.nume}</td>
+                            <td>${detalii.ingrediente}</td>
+                            <td>${detalii.reteta}</td> 
+                          </tr>
+                          `;
+                          str+=rand;
+                        document.getElementById("det").innerHTML=str;
+                   }
+				}
+			};
+			xhttp.open("GET", "https://restaurant-menu-v1.firebaseio.com/menu/0.jsonhttps://restaurant-menu-v1.firebaseio.com/menu/0.json ", true);
+			xhttp.send();
+          </script>
+        <style> 
+        img{
+            width:115px;
+            height: 115px;
+        }
+        table {
+            border-collapse:collapse;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Cald si bun</h1>
+           
+
+            <table border="1" id="det" >
+                   
+            </table>
+                            
+    </body>
+</html>

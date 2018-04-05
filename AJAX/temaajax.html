@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <link rel="stylesheet" href="ajaxcss.css">
+			<script>
+		
+			
+			
+                    /*	var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+				    yesterdayResponse = JSON.parse(this.responseText);
+				    if(todayResponse!==null && yesterdayResponse!==null){
+						drawList(todayResponse, yesterdayResponse);
+					}
+				}
+			};
+			xhttp.open("GET", "https://api.fixer.io/"+yesterdayString+"?base", true);
+			xhttp.send();
+			function drawList(cv,cvy){
+				console.log(cv,cvy);
+			   var str=""
+			   for(var i in cv.rates){
+				   console.log(i, cv.rates[i],cvy.rates[i]);
+				   str += `<li>
+						<span class="currency">${i}</span>:
+						<span class="rate">${(1/cvy.rates[i]).toFixed(4)}</span>&nbsp;
+                        <span class="rate">${(1/cv.rates[i]).toFixed(4)}</span>
+                        <span style="color">${(cv.rates[i]>cvy.rates[i])?"red":"green"}">${1/cv.rates[i]-1/cvy.rates[i].toFixed(8)}</span>
+					</li>`
+				}
+				document.getElementById("containerCursValutar").innerHTML=str;
+				var d = cvy.date.substr(8,2)+"."+cvy.date.substr(5,2)+"."+cvy.date.substr(0,4);
+                d+="-"+cv.date.substr(8,2)+"."+cv.date.substr(5,2)+"."+cv.date.substr(0,4);
+				document.getElementById("containerData").innerHTML=d;
+			} */
+        </script> 
+    </head>
+        <body>
+            <form method="post">
+                <input type="text" id="nume"/>
+                <input value="Afiseaza vremea" name="trimite" id="salveaza"  />
+                <input value="Afiseaza prognoza" name="trimite" id="salveaza"  />
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <div>Vremea acum</div>
+                <ul>
+                <li>Descriere:</li>
+                <li><span>Umiditate:</span></li>
+                <li><span>Presiune:</span></li>
+                <li><span>Temperatura curenta:</span></li>
+                <li><span>Minima zilei:</span></li>
+                <li><span>Maxima zilei:</span></li>
+                <li><span>Prognoza meteo:</span></li>
+            </ul>
+            </form>
+
+        </body>

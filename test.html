@@ -1,8 +1,22 @@
 <html>
     <head>
       <title> Siteul este al meu</title>
+     <script> function cheie (elem, e) {
+             		
+        console.log(e.key);
+         if(e.key >= "A" && e.key <= "Z" || e.key >= "a" && e.key <= "z" || e.key === " " || e.key === "'") {
+                 
+
+             }else {
+                 e.preventDefault();
+             }
+
+ }
+</script>
     </head>
     <body>
+            <input type="text" id="nume" name="numeleMeu" onkeypress="cheie(this,event);" />
         <p> Numele meu este Cojocaru Ileana... </p>
+        <div>  <p></p>  </div>
     </body>
 </html>

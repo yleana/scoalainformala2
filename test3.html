@@ -1,0 +1,31 @@
+<html>
+    <head>
+            <script type="text/javascript">
+                function toggle(id)
+                {
+                    var obj = document.getElementById(id);
+                    var button = document.getElementById('button');
+             
+                    if(obj.style.visibility == 'hidden')
+                    {
+                        button.value = 'Ascunde';
+                        obj.style.visibility = 'visible';
+                    }
+                    else
+                    {
+                        button.value = 'Arata';
+                        obj.style.visibility = 'hidden';
+                    }
+                }
+            </script>
+    </head>
+    <body>
+            <div id="wrapper">
+                    <input type="button" id="button" value="Ascunde" onclick="toggle('theDiv')" />
+                    <div id="theDiv">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin placerat turpis quis sem aliquet dignissim. Sed pellentesque eros lacinia lorem malesuada ornare. Aenean eget elementum justo. Donec ut justo sem, non volutpat sapien...</p>
+                    </div>
+                </div>
+</body>
+    
+</html>    

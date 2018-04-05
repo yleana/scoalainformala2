@@ -1,0 +1,159 @@
+<html>
+
+<head>
+    <script> var listaClienti = [];
+        function adauga(form, event) {
+            event.preventDefault();
+            var item = document.querySelector("#item").value;
+            listaClienti.push({
+                item: item,
+            });
+            drawClienti();
+        }
+
+        function sorteazaasc(coloana) {
+            listaClienti.sort(function(a,b) {
+                         if(a[coloana]>b[coloana]){
+                             return 1; }
+                             else  if(a[coloana]<b[coloana]){ return -1;}
+                             else {return 0;
+                    }
+                    });
+                    console.log(listaClienti);
+                    drawClienti();
+        }
+        function sorteazadesc(coloana) {
+            listaClienti.sort(function (a, b) {
+                if (a[coloana] > b[coloana]) {
+                    return 1;
+                }
+                else if (a[coloana] < b[coloana]) { return -1; }
+                else {
+                    return 0;
+                }
+            });
+            listaClienti.reverse();
+            console.log(listaClienti);
+            drawClienti();
+        }
+
+        function cumpara(index) {
+            // var x = document.getElementById("listaClienti");
+            // var client = listaClienti[index];
+            // document.querySelector("form [name=item]").value = client.item;
+            // for (var i = 0; i < client.length; i++) {
+            //     selectedList[i].classList.remove("lista");
+            // }
+
+            //document.querySelectorAll("#listaClienti tbody tr")[index].classList.add("buyed");
+
+            // if (x.classList) {
+            //     x.classList.toggle("buyed");
+            // } else {
+            //     var classes = x.className.split(" ");
+            //     var i = classes.indexOf("buyed");
+
+            //     if (i >= 0)
+            //         classes.splice(i, 1);
+            //     else
+            //         classes.push("buyed");
+            //     x.className = classes.join(" ");
+            // }
+            if(listaClienti[index].checked===true){
+                listaClienti[index].checked=false;
+            }else{
+                listaClienti[index].checked=true;
+            }
+            
+            console.log(listaClienti);
+            drawClienti();
+
+        }
+
+
+        function drawClienti() {
+            var tabel = document.querySelector("#listaClienti tbody");
+            var str = "";
+            for (var i = 0; i < listaClienti.length; i++) {
+                //listaClienti[i].nume
+                //listaClienti[i].prenume
+                //listaClienti[i].varsta
+                //listaClienti[i].telefon   //"<tr> "+ "<td>Cojo</td>"
+                if(listaClienti[i].checked===true){
+                    str += `
+                          <tr class="buyed">               
+                            <td>${listaClienti[i].item}</td>
+                            <td><button class="on" onclick="cumpara(${i})" >Mark as buyed</button></td>
+                          </tr>
+                          `;
+                }else{
+                str += `
+                          <tr>               
+                            <td>${listaClienti[i].item}</td>
+                            <td><button class="on" onclick="cumpara(${i})" >Mark as buyed</button></td>
+                          </tr>
+                          `;
+                }
+
+            }
+            console.log(str);
+            tabel.innerHTML = str;
+        }
+
+    </script>
+    <style>
+        .buyed {
+            text-decoration: line-through;
+        }
+
+        .lista {
+            text-decoration: none;
+        }
+
+        .lis {
+            background-color: #1aff8c;
+        }
+
+        .asc {
+            background-color: #d966ff;
+        }
+
+        .on {
+            background-color: #ff99bb;
+        }
+
+        /* #item{
+				display:block;
+			}
+        */
+    </style>
+</head>
+
+<body>
+    <h1>SHOPPING LIST</h1>
+    <form onsubmit="adauga(this,event);">
+        <div>
+
+            <label for="item"></label>
+            <input name="item" id="item" type="text" class="lista">
+            <button type="submit" class="lis">Add item</button>
+            <br/>
+            <br/>
+            <p>
+                <input type="button" class="asc" value="Sort asc" onclick="sorteazaasc('item')" />
+                <input type="button" class="asc" value="Sort desc" onclick="sorteazadesc('item')" />
+            </p>
+        </div>
+    </form>
+    <table id="listaClienti">
+        <thead>
+            <tr>
+                <td class="lista">Item description</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody></tbody>
+
+</body>
+
+</html>

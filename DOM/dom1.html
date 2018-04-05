@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function valideaza(formular, e) {
+            console.log(formular.queryselector("[name=numeleMeu]").value);
+            if (formular.queryselector("[name=numeleMeu]").value.lenght === 0) {
+                formular.queryselector("[name=numeleMeu]").style.border = "1px solid red";
+            } else {
+                formular.queryselector("[name=numeleMeu]").style.border = "";
+            }
+            e.preventDefault();
+        }
+    </script>
+</head>
+
+<body>
+    <form method="post" onsubmit="valideaza(this,event);">
+        <fieldset style="border: 1px dashed #676767;">
+            <legend style="border: 1px dashed #676767;border-radius: 10px;padding: 0 5px;">New Account</legend>
+            <label for="nume">Nume:</label>
+            <input name="numeleMeu" id="nume" type="text">
+
+            <input type="submit" value="Salveaza" />
+
+        </fieldset>
+    </form>
+    <form method="post" onsubmit="valideaza(this,event);">
+        <fieldset style="border: 1px dashed #676767;">
+            <legend style="border: 1px dashed #676767;border-radius: 10px;padding: 0 5px;">New Account</legend>
+            <label for="nume">Nume:</label>
+            <input name="numeleMeu" id="nume" type="text">
+
+            <input type="submit" value="Salveaza" />
+
+        </fieldset>
+    </form>
+
+
+</body>
+
+</html>

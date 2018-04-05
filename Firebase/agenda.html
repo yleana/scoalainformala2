@@ -1,0 +1,90 @@
+<html>
+
+<head>
+    <script> var listaClienti=[
+        {
+            nume:"Popescu",
+            nota:9
+        },
+        {
+            nume:"Ionescu",
+            nota:7
+        },
+        ];
+        
+            function adauga(form,event){
+                event.preventDefault(); 
+                  var  nume=document.querySelector("#nume").value;
+                  var  telefon=document.querySelector("#telefon").value;
+                  listaClienti.push ({nume: nume,
+                                      telefon: telefon,
+                  });
+                  drawClienti();
+            }
+            
+    
+
+     /*   function modifica(index){
+            var client=listaclienti(index);
+            document.querySelector("form[name=nume]").value=client.nume;
+            document.querySelector("form[name=telefon]").value=client.telefon;
+            mod=index;
+        } */
+        function drawClienti(){
+                    var tabel=document.querySelector("#listaClienti tbody");
+                    var str="";
+                    for(var i=0;i<listaClienti.length;i++){
+                        //listaClienti[i].nume
+                         //listaClienti[i].prenume
+                         //listaClienti[i].varsta
+                         //listaClienti[i].telefon   //"<tr> "+ "<td>Cojo</td>"
+                            str += `
+                          <tr>               
+                            <td>${listaClienti[i].nume}</td>
+                            <td>${listaClienti[i].telefon}</td>
+                            <td><a href="#" onclick="modifica(${i})">Modifica</a></td>
+                            <td><a href="#" onclick="sterge(this)">Sterge</a></td>
+                          </tr>
+                          `;
+                        
+                    }
+                    console.log(str);
+                    tabel.innerHTML=str;
+        }
+    </script>
+ <style>
+    h1{ 
+        text-align:left;}
+     p{ 
+        text-align:left;}
+   
+   </style>
+</head>
+
+<body>  
+    <h1>Agenda</h1>
+    <form onsubmit="adauga(this,event);">
+       <div><fieldset style="border: 1px dashed #676767;">
+     
+            <label for="nume">Nume:</label>
+            <input name="nume" id="nume" type="text">
+            <label for="nume">Telefon:</label>
+            <input name="telefon" id="telefon" type="text">
+
+           <p><input type="submit" value="Adauga contact" /></p> 
+
+        </fieldset></div>
+    </form>
+    <table id="listaClienti" >
+              <thead>  <tr >
+                         <td >Nume</td>
+                         <td>Telefon</td>
+                         <td ></td>
+                         <td></td>
+                </tr> 
+            </thead>
+            <tbody></tbody>
+
+</body>
+
+</html>

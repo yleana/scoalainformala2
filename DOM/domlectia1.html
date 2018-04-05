@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Formular</title>
+        <style>
+            fieldset {
+               border-style: dashed; 
+
+            }
+
+            legend {
+               border-style: dashed; 
+               border-radius: 10px;
+               border-width: 1px;
+            }
+            
+        </style>
+        <script>
+            function valideaza (elem, e) {
+                e.preventDefault();
+                console.log(elem,e);
+           
+
+            var elemNume=document.getElementById("nume");
+            var elemPrenume=document.getElementById("prenume");
+            var elemParola=document.getElementById("password");
+            var elemRescrieParola=document.getElementById("password2");
+            var elemTermeniSiConditii=document.getElementById("tc");
+
+            console.log(elemNume);
+            console.log(elemPrenume);
+            console.log(elemParola);
+            console.log(elemRescrieParola);
+            console.log(elemTermeniSiConditii);
+
+            console.log(elemNume.value);
+            console.log(elemPrenume.value);
+            console.log(elemParola.value);
+            console.log(elemRescrieParola.value);
+            console.log(elemTermeniSiConditii.value);
+
+					var lmare = false;
+                	var lmica = false;
+                	var cifra = false;
+                	var caracter = false;
+
+                for(i=0; i<elemParola.value.length; i++) {
+                	if(elemParola.value[i] >= "a" && elemParola.value[i] <= "z") {
+                		lmica = true;
+                	}
+                	if(elemParola.value[i] >= "A" && elemParola.value[i] <= "Z") {
+                		lmare = true;
+                	}
+                	if(elemParola.value[i] >=0 && elemParola.value[i] <=9 ) {
+                		cifra = true;
+                	}
+                	if(elemParola.value[i] === "!" || elemParola.value[i] === "$") {
+                		caracter = true;
+                	}
+                }
+
+
+                	
+            if (elemRescrieParola.value === elemParola.value && lmare === true && lmica === true && cifra === true && caracter === true) {
+                    
+                    elemParola.style.backgroundColor="";
+                    elemRescrieParola.style.backgroundColor="";
+                    document.getElementById("parola").style.display="none";
+                    document.getElementById("rparola").style.display="none";
+                } else {
+                    
+                    elemParola.style.backgroundColor="red";
+                    elemRescrieParola.style.backgroundColor="red";
+                    document.getElementById("parola").style.display="";
+                    document.getElementById("rparola").style.display="";
+                }
+
+
+
+            if (elemNume.value.length < 3) {
+                    elemNume.style.backgroundColor="red";
+                    document.getElementById("numep").style.display="";
+                }else {
+                    elemNume.style.backgroundColor="";
+                    document.getElementById("numep").style.display="none";
+                }
+
+            if (elemPrenume.value.length < 3) {
+                    elemPrenume.style.backgroundColor="red";
+                    document.getElementById("prenumep").style.display="";
+                }else {
+                    elemPrenume.style.backgroundColor="";
+                    document.getElementById("prenumep").style.display="none";
+                }
+
+            if (elemTermeniSiConditii.checked){
+                   elemTermeniSiConditii.style.boxShadow="";
+            }else {
+                    elemTermeniSiConditii.style.boxShadow="0px 5px 10px red";
+                    
+                }}
+
+
+
+             	function cheie (elem, e) {
+             		
+					console.log(e.key);
+             		if(e.key >= "A" && e.key <= "Z" || e.key >= "a" && e.key <= "z" || e.key === " " || e.key === "'") {
+             				
+
+             			}else {
+             				e.preventDefault();
+             			}
+    
+             }
+
+
+
+
+             
+        </script>
+	</head>
+	<body>
+        <form method="post" onsubmit="valideaza(this,event);">
+             <fieldset>
+                <legend>Cont nou</legend>
+    	             <label for="nume">Nume: </label>
+                     <input type="text" id="nume" name="numeleMeu" onkeypress="cheie(this,event);" />
+                     <p style="display:none;" id="numep">Nu ai completat numele bine!</p>
+                     <br />
+                     <label for="prenume">Prenume: </label>
+                     <input type="text" id="prenume" name="prenumeleMeu" onkeypress="cheie(this,event);" />
+                     <p style="display:none;" id="prenumep">Nu ai completat prenumele bine!</p>
+                     <br />
+                     <label for="password">Parola: </label>
+                     <input type="password" id="password" name="parolaMea"  />
+                     <p style="display:none;" id="parola">Nu ai completat parola bine!</p>
+                     <br />
+                     <label for="password2">Rescrie parola: </label>
+                     <input type="password" id="password2" name="dinNouParola" />
+                     <p style="display:none;" id="rparola">Nu ai completat parola bine!</p>
+                     <br />
+                     <label for="tc">Acepta termenii si conditiile: </label>
+                     <input type="checkbox" id="tc" name="termenisiconditii" />
+                     <br />
+                     <input type="submit" value="Salveaza" name="trimite" id="salveaza"  />
+             </fieldset>
+         </form>
+	</body>
+</html>

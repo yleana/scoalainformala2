@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <script>
+          var menu=null;
+            var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function (){
+				if (this.readyState == 4 && this.status == 200) {  
+				   meniu = JSON.parse(this.responseText);
+                   console.log(meniu);
+				   var str=""
+				   for(var i in meniu.menu){
+				       console.log(i, meniu.menu[i]);
+                       var rand= `
+                          <tr>               
+                            <td><img src="${meniu.menu[i].imagine}"/></td>
+                            <td>${meniu.menu[i].nume}<br/>${meniu.menu[i].ingrediente}</td>
+                            <td><a href="http://.../menu/detalii.html?id=${i}"<button>Detalii</button></a></td>
+                          
+                          </tr>
+                          `;
+                          str+=rand;
+                        document.getElementById("ingre").innerHTML=str;
+                   }
+				}
+			};
+			xhttp.open("GET", "https://restaurant-menu-v1.firebaseio.com/.json", true);
+			xhttp.send();
+              function drawMenu(){
+                    var tabel=document.querySelector("#ingr tbody");
+                    var str="";
+                    for(var i=0;i<Menu.length;i++){
+                       if(i in ingrediente){
+                        console.log(i, ingredient[i]);
+                       }
+                         
+                    }
+                    console.log(str);
+                    tabel.innerHTML=str;
+                } 
+                        </script>
+        <style> 
+        img{
+            width:115px;
+            height: 115px;
+        }
+        table {
+            border-collapse:collapse;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>Cald si bun</h1>
+            <form>
+                    <div>
+                  
+                         <label for="ingr"></label>
+                         <input name="ingr"   id="ingr" type="text">
+                        <button type="submit" onclick="drawMenu()">Cauta in ingrediente</button>
+                    
+                    </div>
+                 </form>
+
+            <table border="1" id="ingre" >
+                   
+            </table>
+            <table border="1" id="det" >
+                   
+            </table>
+                            
+    </body>
+</html>

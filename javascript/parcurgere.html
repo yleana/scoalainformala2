@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>JS</title>
+        <script>
+            x=[1,5,10,"a"];
+            function parcurgere(arr){
+                for(var i=0; i<arr.length;i++){
+                   console.log(arr[i]);
+                }
+            }
+            function parcurgereInversa1(arr){
+                for(var i=arr.length-1; i>=0;i--){
+                   console.log(arr[i]);
+                }
+            }
+            function parcurgereInversa2(arr){
+                for(var i=0; i<arr.length;i++){
+                   console.log(arr[arr.length-1-i]);
+                }
+            }
+            console.log(parcurgere(x));
+            console.log(parcurgereInversa1(x));
+            console.log(parcurgereInversa2(x));
+      </script>   </head>
+      <body>
+
+      </body>
+      </html>

@@ -1,0 +1,168 @@
+<html>
+
+<head>
+        <link rel="stylesheet" href="catalog.css">
+    <script> var  listaElevi=[
+       /*  {
+            nume:"Popescu",
+            note:9
+        }, */
+        
+      
+        ];
+        note=[];
+      //  obj[nota]=listaElevi[nota];
+
+        	var indexModificat=-1;
+		function adauga(form, event){
+			event.preventDefault();
+			
+            listaElevi.push({
+                nume: form.querySelector("[name=nume]").value,
+                note:[]
+            });
+			
+			drawElevi();}
+            
+      function toggle(id)
+                {
+                    var obj = document.getElementById(id);
+                    var button = document.getElementById('button');
+             
+                    if(obj.style.visibility == 'hidden')
+                    {
+                       // button.value = 'Ascunde notele';
+                        obj.style.visibility = 'visible';
+                    }
+                    else
+                    {
+                      //  button.value = 'Vezi notele';
+                        obj.style.visibility = 'hidden';
+                    }
+                }
+       function sortare(coloana,event,ord){
+            listaElevi[indexElev].note.sort() 
+                         if(ord==="desc"){ 
+                             listaElevi[indexElev].note.reverse();}
+                             drawNote();  
+                             drawElevi();   
+       }
+       function sortareMedia(ii,elem,event){
+        listaElevi.sort(function(a,b){
+            if((a.suma/a.note.length)>(b.suma/b.note.length)){
+                return 1;}
+                else  if((a.suma/a.note.length)<(b.suma/b.note.length)){
+                    return 1;}
+                    else {return 0;}
+                });
+                 if(ii==="desc"){
+                    listaElevi.reverse();
+                 }
+                 drawNote();  
+                 drawElevi(); 
+                 }
+        function drawElevi(){
+                    var tabel=document.querySelector("#listaElevi tbody");
+                    var str="";
+                    for(var i=0;i<listaElevi.length;i++){
+                            str += `
+                          <tr>               
+                            <td>${listaElevi[i].nume}</td>
+                            <td></td>
+                            <td><input type="button" id="button" value="Vezi notele" onclick="indexElev=${i};toggle('note_elev_wrapper')" /></td>
+                          </tr>
+                          `;
+                        
+                    }
+                    console.log(str);
+                    tabel.innerHTML=str;
+        }
+        function adauganote(form,event){
+                event.preventDefault(); 
+                var  not=parseInt(document.querySelector("#nota").value);
+                   listaElevi.nota.push(not);
+                  drawNote();
+            }    
+
+        function drawNote(){
+                    var tabel=document.querySelector("#note_elev_wrapper tbody");
+                    var sr="";
+                    for(var i=0;i<note.length;i++){
+                        //listaClienti[i].nume
+                         //listaClienti[i].prenume
+                         //listaClienti[i].varsta
+                         //listaClienti[i].telefon   //"<tr> "+ "<td>Cojo</td>"
+                            sr += `
+                          <tr>               
+                            <td>${listaElevi.note[i].nota}</td>
+                          </tr>
+                          `;
+                        
+                    }
+                    console.log(sr);
+                    tabel.innerHTML=sr;
+        }
+    </script>
+ <style>
+   
+   
+   </style>
+</head>
+
+<body>  
+   <div lista_elevi_wrapper> <h1>Lista elevi</h1>
+    <form onsubmit="adauga(this,event);">
+       <div>
+     
+            <label for="nume">Nume:</label>
+            <input name="nume"  id="nume" type="text" >
+           <input type="submit" value="Adauga elev" />
+           <br/>
+           <br/>
+           <p>
+           <input type="button" value="Sorteaza ascedent dupa medie note" onclick="sortareMedia(1,'nume',this)"  />
+           <br/>
+           <input type="button" value="Sorteaza descendent dupa medie note" onclick="sorteazadesc(1,'nume',this)"  />
+        </p>
+       </div>
+    </form>
+    <table id="listaElevi" >
+        <thead>  <tr >
+                   <td  >Nume</td>
+                 
+                   <td >Medie note</td>
+                   <td ></td>
+          </tr> 
+      </thead>
+      <tbody></tbody>
+</div>   <td><input type="button" id="button" value="Ascunde notele" onclick="toggle('note_elev_wrapper')" /></td>
+    <div id="note_elev_wrapper">
+         <h1>Note elevi:</h1>
+        <form onsubmit="adauganote(this,event);">
+           <div>
+         
+                <label for="nota">Nota:</label>
+                <input name="nota"  id="nota" type="text" >
+               <input type="submit" value="Adauga nota" />
+               <br/>
+               <br/>
+               <p>
+               <input type="button" value="Sorteaza ascedent notele" onclick="sortare('nota',this)"  />
+               <br/>
+               <input type="button" value="Sorteaza descendent notele" onclick="sortare('nota',this)"  />
+            </p>
+            <table id="note" >
+                     <tr >
+                             <td  >Nota</td>
+                    </tr> 
+                  
+           </div>
+        </form>
+    
+    
+        </div>
+   
+</body>
+
+
+</html>

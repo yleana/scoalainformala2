@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>JS</title>
+        <script>
+          var zileSaptamana=["luni","marti","miercuri","joi","vineri","sambata","duminica"];
+          console.log(zileSaptamana);  
+          console.log(zileSaptamana[2]);  
+          console.log(zileSaptamana.length);    
+          var pc={
+              cpu: {
+                  familie:"i7",
+                  frecventa:"2GHz",
+                  producator:"intel"
+
+              },
+              ram: {
+                  clock_speed: 15,
+                  frecventa: 2666,
+              }
+          }   
+          console.log(pc);    
+          console.log(pc.cpu);
+          console.log(pc["cpu"]);
+          console.log(pc.cpu.familie);
+          console.log(pc["cpu"]["familie"]);
+          console.log(pc.cpu["familie"]);
+          console.log(pc["cpu"].familie);
+          var yo={
+              viu: true,
+              nume:"nourescu",
+              prenume: "bogdan",
+              inaltime: 1.75,
+              greutate: 75,
+              ochi:{culoare:"caprui",
+              dioptrii:-0.25,
+              numar:2 },
+              buletin:{
+                  serie:"rx",
+                  numar:1234,
+                  cnp:1234567891012,
+                  locul_nasterii:"slobozia" },
+              diploma:[
+                  "bac",
+                  "licenta"
+                  ] }
+        console.log(yo);  
+        console.log(yo.buletin.cnp);  
+        console.log(yo["diploma"]);  
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

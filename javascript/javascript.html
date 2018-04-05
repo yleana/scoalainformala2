@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>JS</title>
+        <script>
+            var nume = "Cojo";
+            var prenume = "Ileana";
+            var prenumeNume = prenume + "  " + nume;
+            console.log(prenumeNume);
+            function sum(a,b){
+                return a+b;
+            }
+            console.log(sum(5,7),sum(3,5),prenumeNume);
+            console.log(sum(5,7));
+            console.log(sum(3,5));
+            console.log(prenumeNume);
+            console.log(sum("Ana","are mere"));
+            function max(a,b){
+                if(a>b){return a;}
+                else {return b;}
+            }
+            console.log(max(5,7));
+            console.log(max(6,2));
+            console.log(max(7,3));
+            console.log(max("a","b"));
+            console.log(max("t","g"));
+            function putere(x ) {return x*x*x;}
+            console.log(putere(2));
+            function sup(x){ return 180-x}
+            console.log(sup(40));
+            function com(x){ return 90-x}
+            console.log(com(40));
+            
+            function minim(a,b,c){if((a < b) && (a < c)) { return a;}
+                                   else if (b<c) {return b;}
+                                       else {return c;}                       
+                
+            }
+            function perim(x,y){
+                return 2*x+2*y;
+            }
+            console.log(minim(3,2,5));
+            console.log(minim(15,14,13));
+            console.log(perim(2,2));
+            function grade(x){ return (x*1.8)+32;}
+            console.log(grade(23));
+            function volum_con(r,h){return (r*r*h)/3;}
+            console.log(volum_con(2,3));
+            function compar(a,b){if (a==b) {return true;}
+                                     else {return false;} }
+             console.log(compar(3,2));                  
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>

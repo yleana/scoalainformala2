@@ -1,0 +1,11 @@
+#note_elev_wrapper{background-color: #b3f0ff;
+    width: 50%;
+    float:right;
+    line-height: 40px;}
+#lista_elevi_wrapper{background-color:#8cff1a;
+        width: 20%;
+        float:left;
+        line-height: 40px;
+        }
+body{background-color: #8cff1a;
+        }
